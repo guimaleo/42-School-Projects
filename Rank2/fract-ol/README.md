@@ -19,6 +19,10 @@ Althought I had a glimpse of complex numbers once, some explanations were really
 
 [The Mandelbrot Fractal Explained!](https://www.youtube.com/watch?v=6IWXkV82oyY)
 
+***Special thanks***
+
+***[ngtina99](https://github.com/ngtina99)*** & ***[leanor13](https://github.com/leanor13)***
+
 
 
 
