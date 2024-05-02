@@ -6,7 +6,7 @@
 /*   By: lede-gui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:37:14 by lede-gui          #+#    #+#             */
-/*   Updated: 2024/04/30 20:37:17 by lede-gui         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:46:30 by lede-gui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ typedef struct s_complex
 
 /*---------------------------------------------------------------------------*/
 
-# define HEIGHT 800
-# define WIDTH 800
+# define HEIGHT 400
+# define WIDTH 400
 # define MAX_ITER 1 // ???
 # define KC 0.001
 # define SCALER 0.1
