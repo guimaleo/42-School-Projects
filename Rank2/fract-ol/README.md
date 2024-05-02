@@ -28,23 +28,23 @@ Althought I had a glimpse of complex numbers once, some explanations were really
 
 #### Mandelbrot Set
 
-![Mandelbrot](./Mandelbrot.png)
+![Mandelbrot](./images/Mandelbrot.png)
 
 
 
 #### Julia Set
 
-![Julia](./Julia.png)
+![Julia](./images/Julia.png)
 
 
 
 #### Phoenix
 
-![Phoenix](./Phoenix%20Fibo.png)
+![Phoenix](./images/Phoenix%20Fibo.png)
 
 
 
 #### Extra images
 
-![Julia Sun](./Julia%20Sun.png)
-![Trippy](./trip.png)
+![Julia Sun](./images/Julia%20Sun.png)
+![Trippy](./images/trip.png)
