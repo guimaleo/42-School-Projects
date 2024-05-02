@@ -17,15 +17,15 @@ int	ft_fractal_choice(t_fractol *frac, t_complex c)
 	int	i;
 
 	i = 0;
-	if (!ft_strncmp(frac->name, "Mandelbrot", 11))
+	if (!ft_strcmp(frac->name, "Mandelbrot"))
 		i = ft_mandelbrot(c, frac);
-	else if (!ft_strncmp(frac->name, "Julia", 5))
+	else if (!ft_strcmp(frac->name, "Julia"))
 	{
 		if (frac->iter < 30)
 			frac->iter = 30;
 		i = ft_julia(c, frac);
 	}
-	else if (!ft_strncmp(frac->name, "Phoenix", 8))
+	else if (!ft_strcmp(frac->name, "Phoenix"))
 		i = ft_phoenix(c, frac);
 	return (i);
 }

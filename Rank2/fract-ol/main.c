@@ -21,17 +21,17 @@ static void	ft_simple_parser(int ac, char **av)
 	go = true;
 	if (ac < 2 || ac == 3)
 		go = false;
-	if (!ft_strncmp(av[1], "Mandelbrot", ft_strlen("Mandelbrot")))
+	if (!ft_strcmp(av[1], "Mandelbrot"))
 	 {
 	 	if (ac != 2)
 	 		go = false;
 	 }
-	else if (!ft_strncmp(av[1], "Julia", ft_strlen("Julia")))
+	else if (!ft_strcmp(av[1], "Julia"))
 	{
 		if (ac != 4)
 			go = false;
 	}
-	else if (!ft_strncmp(av[1], "Phoenix", ft_strlen("Phoenix")))
+	else if (!ft_strcmp(av[1], "Phoenix"))
 	{
 		if (ac != 5)
 			go = false;

@@ -6,6 +6,7 @@ INC_DIR = include
 MAIN_SRC = main.c
 FT_PRINTF_DIR= ./include/ft_printf
 PRINTFLIB= $(FT_PRINTF_DIR)/libftprintf.a
+MINILIBX_DIR= ./include/minilibx-linux
 
 SRC_FILES = window.c hooks.c image.c error.c fractals.c \
 	    string_utils.c math_utils.c inst.c
@@ -21,6 +22,7 @@ PROGRAM = fractol
 all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ)
+	$(MAKE) -C $(MINILIBX_DIR)
 	$(MAKE) -C $(FT_PRINTF_DIR)
 	@ar -crs $(NAME) $(OBJ)
 	@echo "\nFract-ol compiled!\n"
@@ -39,6 +41,8 @@ clean:
 	@echo "\n$(PROGRAM) objects deleted!\n"
 
 fclean: clean
+	$(MAKE) clean -C $(MINILIBX_DIR)
+	$(MAKE) fclean -C $(FT_PRINTF_DIR)
 	@rm -f $(NAME) $(PROGRAM)
 	@echo "\n$(PROGRAM) and $(NAME) deleted!\n"
 re: fclean all

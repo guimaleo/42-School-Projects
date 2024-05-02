@@ -133,7 +133,7 @@ void		ft_hooking(t_fractol *comm);
 void		ft_print_instructions(void);
 size_t		ft_strlen(char *s);
 void		ft_error(char *s);
-size_t		ft_strncmp(char *s1, char *s2, size_t n);
+size_t		ft_strcmp(char *s1, char *s2);
 void		ft_text_inst(t_fractol *txt);
 
 /*MATH UTILS*/
