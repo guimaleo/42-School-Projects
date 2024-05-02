@@ -20,19 +20,29 @@ Althought I had a glimpse of complex numbers once, some explanations were really
 [The Mandelbrot Fractal Explained!](https://www.youtube.com/watch?v=6IWXkV82oyY)
 
 
+
+
 ### As shown bellow, a huge variety of fractals can be generated with this program!
+
+
 
 #### Mandelbrot Set
 
 ![Mandelbrot](./Mandelbrot.png)
 
+
+
 #### Julia Set
 
 ![Julia](./Julia.png)
 
+
+
 #### Phoenix
 
 ![Phoenix](./Phoenix%20Fibo.png)
+
+
 
 #### Extra images
 
