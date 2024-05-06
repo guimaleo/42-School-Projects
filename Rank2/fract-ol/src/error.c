@@ -16,13 +16,13 @@ void	ft_error(char *s)
 {
 	if (!s)
 	{
-		printf("Unknown error!");
+		ft_printf("Unknown error!");
 		return ;
 	}
 	else
 	{
 		perror(s);
-		strerror(errno);
+		ft_printf("Error: %s\n", strerror(errno));
 		return ;
 	}
 }
