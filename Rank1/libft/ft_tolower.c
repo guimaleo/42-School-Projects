@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lede-gui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 23:34:52 by lede-gui          #+#    #+#             */
-/*   Updated: 2023/10/12 23:42:08 by lede-gui         ###   ########.fr       */
+/*   Created: 2023/10/03 15:56:07 by lede-gui          #+#    #+#             */
+/*   Updated: 2023/10/03 16:08:33 by lede-gui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_tolower(int c)
 {
-	void			*dest;
-	unsigned char	*byte_dest;
-
-	dest = malloc(nmemb * size);
-	if (!dest)
-		return (NULL);
-	byte_dest = (unsigned char *)dest;
-	ft_bzero(byte_dest, (nmemb * size));
-	return (dest);
-}
-
-int		main()
-{
-	
+	if (c > 64 && c < 91)
+		c += 32;
+	return (c);
 }

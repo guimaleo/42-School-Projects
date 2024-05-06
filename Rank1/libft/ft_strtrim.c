@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lede-gui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 23:34:52 by lede-gui          #+#    #+#             */
-/*   Updated: 2023/10/12 23:42:08 by lede-gui         ###   ########.fr       */
+/*   Created: 2023/10/13 19:13:08 by lede-gui          #+#    #+#             */
+/*   Updated: 2023/10/15 12:43:02 by lede-gui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	void			*dest;
-	unsigned char	*byte_dest;
+	int	i;
 
-	dest = malloc(nmemb * size);
-	if (!dest)
+	if (!s1 || !set)
 		return (NULL);
-	byte_dest = (unsigned char *)dest;
-	ft_bzero(byte_dest, (nmemb * size));
-	return (dest);
-}
-
-int		main()
-{
-	
+	i = 0;
+	while (*s1 && ft_strchr(set, *s1))
+		s1++;
+	i = ft_strlen(s1);
+	while (i && ft_strrchr(set, (s1[i])))
+		i--;
+	return (ft_substr(s1, 0, i + 1));
 }

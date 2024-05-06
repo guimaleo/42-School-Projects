@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lede-gui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 23:34:52 by lede-gui          #+#    #+#             */
-/*   Updated: 2023/10/12 23:42:08 by lede-gui         ###   ########.fr       */
+/*   Created: 2023/10/07 16:41:36 by lede-gui          #+#    #+#             */
+/*   Updated: 2023/10/07 16:56:39 by lede-gui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strrchr(const char *s, int c)
 {
-	void			*dest;
-	unsigned char	*byte_dest;
+	char	*ptr;
+	int		i;
 
-	dest = malloc(nmemb * size);
-	if (!dest)
-		return (NULL);
-	byte_dest = (unsigned char *)dest;
-	ft_bzero(byte_dest, (nmemb * size));
-	return (dest);
+	ptr = (char *)s;
+	i = ft_strlen(s);
+	if (c == 0)
+		return (ptr + i);
+	while (i >= 0)
+	{
+		if (ptr[i] == (char)c)
+			return (ptr + i);
+		i--;
+	}
+	return (NULL);
 }
-
-int		main()
+/*
+int	main(void)
 {
-	
-}
+	printf("Custom:   %s|\n", ft_strrchr("fah sfh", 32));
+	printf("Original: %s|\n", strrchr("fah sfh", 32));
+}*/

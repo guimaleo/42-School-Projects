@@ -17,6 +17,8 @@ int	ft_atoi(const char *nptr)
 	int	sign;
 	int	result;
 
+	if (!nptr)
+		return (-1);
 	sign = 1;
 	result = 0;
 	while (*nptr == 32 || (*nptr > 8 && *nptr < 14))

@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lede-gui <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 23:34:52 by lede-gui          #+#    #+#             */
-/*   Updated: 2023/10/12 23:42:08 by lede-gui         ###   ########.fr       */
+/*   Created: 2023/10/12 23:41:43 by lede-gui          #+#    #+#             */
+/*   Updated: 2023/10/13 17:43:44 by lede-gui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+char	*ft_strdup(const char *s)
 {
-	void			*dest;
-	unsigned char	*byte_dest;
+	size_t	len;
+	char	*str;
 
-	dest = malloc(nmemb * size);
-	if (!dest)
+	len = ft_strlen(s);
+	str = malloc((len + 1) * sizeof(char));
+	if (!str)
 		return (NULL);
-	byte_dest = (unsigned char *)dest;
-	ft_bzero(byte_dest, (nmemb * size));
-	return (dest);
+	ft_memcpy(str, s, len);
+	str[len] = 0;
+	return (str);
 }
-
-int		main()
+/*
+int	main(void)
 {
-	
-}
+	char	s1[] = "Borracha";
+	char	*s3 = NULL;
+
+	printf("%s\n", ft_strdup(s1));
+	printf("%s\n", strdup(s3));
+}*/
