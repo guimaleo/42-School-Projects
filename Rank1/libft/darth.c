@@ -15,6 +15,38 @@
 #include <stdbool.h>
 #include <limits.h>
 #include <time.h>
+#include <bsd/string.h>
+
+#include <stdio.h>
+
+void print_vader() {
+    printf("\033[1;31m");
+    printf("                               _____________________\n");
+    printf("                       .-.     |     Welcome!      |\n");
+    printf("                      |_:_|    |    Let's test     |\n");
+    printf("                     /(_Y_)\\   | the force in you! |\n");
+    printf(".                   ( \\/M\\/ ) <____________________|           \n");
+    printf(" '.               _.'-/'-\\'._\n");
+    printf("   ':           _/.--'[[[[]'--.\\_\n");
+    printf("     ':        /_'  : |::\"| :  '.\\\n");
+    printf("       ':     //   ./ |oUU| \\.  ':\\\n");
+    printf("         ':  _:'..' \\_|___|_/ :   :|\n");
+    printf("           ':.  .'  |_[___]_|  :.':\\\n");
+    printf("            [::\\ |  :  | |  :   ; : \\\n");
+    printf("             '-'   \\/'.| |.' \\  .;.' |\n");
+    printf("             |\\_    \\  '-'   :       |\n");
+    printf("             |  \\    \\ .:    :   |   |\n");
+    printf("             |   \\    | '.   :    \\  |\n");
+    printf("             /       \\   :. .;       |\n");
+    printf("            /     |   |  :__/     :  \\\\\n");
+    printf("           |  |   |    \\:   | \\   |   ||\n");
+    printf("          /    \\  : :  |:   /  |__|   /|\n");
+    printf("          |     : : :_/_|  /'.\\  '--|_\\\n");
+    printf("          /___.-/_|-'   \\  \\\n");
+    printf("                         '-' \n");
+    printf("\033[0m");
+	sleep(3);
+}
 
 
 
@@ -22,6 +54,7 @@ int	ft_memory_tester(int x);
 
 int	main()
 {
+	print_vader();
 	printf("\033[1;32m\nIs something tests\n\033[0m\n");
 	if ((ft_isalpha(1) == isalpha(1)) && (ft_isalpha('a') == isalpha('a')))
 		printf("ft_isalpha: \033[1;36mOK!\033[0m\n");
@@ -108,7 +141,6 @@ int	main()
 	free(compare);
 	int		test[5] = {42, 2147483648, 2147483641, -2147483642, -2147483648};
 	int		i = -1;
-	int		nbres[5];
 	char		*temp;
 	int		aux;
 	bool	passed = true;
@@ -256,7 +288,38 @@ int	main()
 		printf("ft_strrchr: \033[1;36mOK!\033[0m\n");
 	else
 		printf("ft_strrchr: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
-printf("\033[1;32m\nMemory Tests\n\033[0m\n");
+	char	a[] = "We don't like Francinette!\0\0\0";
+	if (ft_strlen(a) == strlen(a))
+		printf("ft_strlen: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_strlen: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	char	b[] = "";
+	char	c[] = "We don't like Francinette!\0\0\0";
+	if ((strlen(ft_strjoin(b,c)) == strlen(a)) && !strcmp(a, ft_strjoin(b, c)))
+		printf("ft_strjoin: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_strjoin: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	//printf("...");
+	char	*d, *e;
+	//char	*f = NULL;
+	d = ft_strdup("Luke I'm your father!");
+	e = strdup(d);
+	char	f[] = "";
+	if(!strcmp(d, e))
+		printf("ft_strdup: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_strdup: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	if (ft_strncmp(e, f, 3) == strncmp(e, f, 3))
+		printf("ft_strncmp: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_strncmp: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	if (strnstr("Francinette", a, 30) == ft_strnstr("Francinette", a, 30))
+		printf("ft_strstr: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_strstr: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+
+	printf("\033[1;32m\nMemory Tests\n\033[0m\n");
+
 	if ((ft_memory_tester(1)))
 		printf("ft_memset: \033[1;36mOK!\033[0m\n");
 	else
@@ -327,14 +390,18 @@ printf("\033[1;32m\nMemory Tests\n\033[0m\n");
 			printf("ft_isascii: \033[1;36mOK!\033[0m\n");
 		else
 			printf("ft_isascii: \033[1;35mKO!!! Let's talk about it...\033[0m\n");*/
+	fd[0] = open(".rm.sh", O_CREAT | O_WRONLY, 0777);
+	ft_putendl_fd("#!/bin/bash", fd[0]);
+	close(fd[0]);
+	fd[1] = open(".rm.sh", O_APPEND | O_WRONLY);
+	ft_putstr_fd("$(rm *.txt .rm.sh)", fd[1]);
+	close(fd[1]);
 }
 
 int	ft_memory_tester(int x)
 {
 	void	*p;
 	void	*rip;
-	bool	passed = true;
-
 
 	p = malloc(10);
 	if (!p)

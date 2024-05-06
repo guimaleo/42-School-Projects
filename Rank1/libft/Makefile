@@ -31,8 +31,8 @@ OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(SRC:.c=.o))
 BONUS_OBJ = $(addprefix $(OBJ_DIR)/, $(BONUS_SRC:.c=.o))
 
-MAIN_SRC = main.c
-PROGRAM = exec
+MAIN_SRC = darth.c
+PROGRAM = sith
 
 all: $(NAME)
 
