@@ -23,7 +23,7 @@ int	main()
 {
 	int	fd;
 
-	fd = open("./txt/test.txt", O_CREAT | O_WRONLY, 0742);
+	fd = open("./txt/test.txt", O_CREAT | O_WRONLY, 0666);
 	ft_putchar_fd('T', fd);
 	close(fd);
 }*/

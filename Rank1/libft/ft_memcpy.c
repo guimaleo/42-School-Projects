@@ -18,8 +18,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	char		*ptr_dest;
 	const char	*ptr_src;
 
-	if (!dest && !src)
-		return (0);
+	if (!dest || !src)
+		return ((void *)0);
 	ptr_dest = (char *)dest;
 	ptr_src = (const char *)src;
 	i = 0;
@@ -35,7 +35,7 @@ int	main()
 {
 	char	tab[] = "CHULA PATCHULA";
 	char	str[] = "Memory";
-	
+
 	printf("Before function tab: %p\n%s\n", &tab, tab);
 	printf("Before function str: %p\n%s\n", &str, str);
 	ft_memcpy(tab, str, 6);

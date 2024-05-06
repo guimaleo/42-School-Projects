@@ -70,7 +70,7 @@ char	**ft_split(char const *s, char c)
 /*
 int	main()
 {
-	char	str[] = "  a    GONCALO PELA SACO!          fasfasf ";
+	char	str[] = "  Split geralmente tem problema no count words!       ";
 	printf("%i\n", count_words(str, 32));
 	int	i = 0;
 	char	**split;

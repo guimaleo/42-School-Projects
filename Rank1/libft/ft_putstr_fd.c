@@ -24,7 +24,7 @@ int	main()
 {
 	int	fd;
 
-	fd = open("./txt/teststr.txt", O_CREAT | O_WRONLY, 0742);
+	fd = open("./txt/teststr.txt", O_CREAT | O_WRONLY, 0666);
 	ft_putstr_fd("Escreva a informacao aqui!\n", fd);
 	close(fd);
 }*/

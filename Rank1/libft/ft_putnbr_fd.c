@@ -39,7 +39,7 @@ int	main()
 {
 	int	fd;
 
-	fd = open("./txt/testputnb.txt", O_CREAT | O_WRONLY, 0742);
+	fd = open("./txt/testputnb.txt", O_CREAT | O_WRONLY, 0666);
 	ft_putnbr_fd(-2147483648, fd);
 	close(fd);
 }*/

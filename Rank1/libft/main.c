@@ -13,6 +13,10 @@
 #include "libft.h"
 #include <string.h>
 #include <stdbool.h>
+#include <limits.h>
+#include <time.h>
+
+
 
 int	ft_memory_tester(int x);
 
@@ -47,25 +51,11 @@ int	main()
 		printf("ft_tolower: \033[1;36mOK!\033[0m\n");
 	else
 		printf("ft_tolower: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
-	printf("\033[1;32m\nMemory Tests\n\033[0m\n");
-	if ((ft_memory_tester(65)))
-		printf("ft_memset: \033[1;36mOK!\033[0m\n");
-	else
-		printf("ft_memset: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
-	if (ft_memory_tester(0))
-		printf("ft_bzero: \033[1;36mOK!\033[0m\n");
-	else
-		printf("ft_bzero: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
-	char	s[] = "             I have exactly 5 words!           ";
-	if ((count_words(s, 32) == 5))
-			printf("ft_count_words: \033[1;36mOK!\033[0m\n");
-	else
-			printf("ft_count_words: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
 
 	printf("\033[1;32m\nFile Descriptor Tests\n\033[0m\n");
 
 	int		fd[2];
-	fd[0] = open("./fd_res.txt", O_CREAT | O_RDWR, 0742);
+	fd[0] = open("./fd_res.txt", O_CREAT | O_RDWR, 0666);
 	if (fd[0] < 0){
 		perror("open");
 		return 1;
@@ -93,7 +83,7 @@ int	main()
 	free(res);
 
 
-	fd[0] = open("./fd_res2.txt", O_WRONLY | O_CREAT, 0742);
+	fd[0] = open("./fd_res2.txt", O_WRONLY | O_CREAT, 0666);
 	if (fd[0] < 0){
 		perror("open");
 		return (3);
@@ -126,7 +116,7 @@ int	main()
 	while (i < 4)
 	{
 		++i;
-		fd[0] = open("./fd_nbr.txt", O_CREAT | O_WRONLY, 0742);
+		fd[0] = open("./fd_nbr.txt", O_CREAT | O_WRONLY, 0666);
 		if (fd[0] < 0){
 			perror("open");
 			return (5);
@@ -166,7 +156,7 @@ int	main()
 		printf("ft_putnbr_fd: \033[1;36mOK!\033[0m\n");
 	else
 		printf("ft_putnbr_fd: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
-	fd[0] = open("char.txt", O_CREAT | O_WRONLY, 0742);
+	fd[0] = open("char.txt", O_CREAT | O_WRONLY, 0666);
 	if (fd[0] < 0){
 		perror("open");
 		return (7);
@@ -189,15 +179,110 @@ int	main()
 	else
 		printf("ft_putchar_fd: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
 	free(temp);
-			/*
-		if ((ft_isascii(1) == isascii(1)) && (ft_isacii(126) && isascii(126)))
-			printf("ft_isascii: \033[1;36mOK!\033[0m\n");
-		else
-			printf("ft_isascii: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
-		if ((ft_isascii(1) == isascii(1)) && (ft_isacii(126) && isascii(126)))
-			printf("ft_isascii: \033[1;36mOK!\033[0m\n");
-		else
-			printf("ft_isascii: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	printf("\033[1;32m\nStrings Tests\n\033[0m\n");
+	int		x[10] = {INT_MIN, INT_MAX, 0, 42, -42, 1337, 8898291, 999999, 1111111, 9 };
+	char	*x_res[10];
+
+	x[0] = INT_MIN;
+	x[1] = INT_MAX;
+
+	passed = true;
+
+	i = 0;
+	while (i < 10)
+	{
+		x_res[i] = ft_itoa(x[i]);
+		if (x[i] != atoi(x_res[i])){
+			passed = false;
+			break ;
+		}
+		i++;
+	}
+	if (passed)
+		printf("ft_itoa: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_itoa: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	passed = true;
+	i = 0;
+	while (i < 10)
+	{
+		//printf("x[]%i\tx_res[]%i\n", x[i], ft_atoi(x_res[i]));
+		if (x[i] == ft_atoi(x_res[i]))
+		{
+			if (ft_atoi(x_res[i]) != atoi(x_res[i]))
+				passed = false;
+		}
+		i++;
+	}
+	if (passed)
+		printf("ft_atoi: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_atoi: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	char	s[] = "             I have exactly 5 words!           ";
+	if ((count_words(s, 32) == 5))
+			printf("ft_count_words: \033[1;36mOK!\033[0m\n");
+	else
+			printf("ft_count_words: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+
+	passed = true;
+	char	to_split[] = "  Split usually has some problems in the count words logics!       ";
+	i = 0;
+	char	**split;
+	split = ft_split(to_split, 32);
+	while (split[i])
+	{
+		//printf("to_split[%i]: %s\n", i, split[i]);
+		free(split[i]);
+		i++;
+	}
+	if (i != count_words(to_split, 32))
+		passed = false;
+	free(split);
+
+	if (passed)
+		printf("ft_split: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_split: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+
+	char	ns[] = "We don't like Francinette!";
+	res = ft_strchr(ns, '!');
+	if (res == strchr(ns, '!'))
+		printf("ft_strchr: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_strchr: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	res = ft_strrchr(ns, '\'');
+	//printf("%s\n", res);
+	if (res == strrchr(ns, '\''))
+		printf("ft_strrchr: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_strrchr: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+printf("\033[1;32m\nMemory Tests\n\033[0m\n");
+	if ((ft_memory_tester(1)))
+		printf("ft_memset: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_memset: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	if (ft_memory_tester(0))
+		printf("ft_bzero: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_bzero: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	if (ft_memory_tester(2))
+		printf("ft_memcmp: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_memcmp: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	if (ft_memory_tester(3))
+		printf("ft_memcpy: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_memcpy: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	if (ft_memory_tester(4))
+		printf("ft_memmove: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_memmove: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	if (ft_memory_tester(5))
+		printf("ft_memset: \033[1;36mOK!\033[0m\n");
+	else
+		printf("ft_memset: \033[1;35mKO!!! Let's talk about it...\033[0m\n");
+	printf("\033[1;32m\nLinked Lists Tests\n\033[0m\n");
+/*
 		if ((ft_isascii(1) == isascii(1)) && (ft_isacii(126) && isascii(126)))
 			printf("ft_isascii: \033[1;36mOK!\033[0m\n");
 		else
@@ -248,10 +333,16 @@ int	ft_memory_tester(int x)
 {
 	void	*p;
 	void	*rip;
+	bool	passed = true;
+
 
 	p = malloc(10);
+	if (!p)
+		return (-1);
 	rip = malloc(10);
-	if (x != 0)
+	if (!rip)
+		return (-1);
+	if (x == 0)
 	{
 		if (!p || !rip)
 			return (0);
@@ -265,7 +356,7 @@ int	ft_memory_tester(int x)
 		free(rip);
 		return (0);
 	}
-	else
+	else if (x == 1)
 	{
 		if(!p || !rip)
 			return(0);
@@ -280,7 +371,79 @@ int	ft_memory_tester(int x)
 		free(p);
 		free(rip);
 		return (0);
-
 	}
-}
+	else if (x == 2)
+	{
+		char	p[] = "Memory testing!\n";
+		void	*mem;
+		void	*memptr;
 
+		mem = &p;
+		memptr = (p +2);
+		// printf("Custom: %i\n", ft_memcmp(mem, memptr, ft_strlen(p)));
+		// printf("Original: %i\n", memcmp(mem, memptr, ft_strlen(p)));
+		if (ft_memcmp(mem, memptr, ft_strlen(p)) == memcmp(mem, memptr, ft_strlen(p)))
+			return (1);
+		else
+			return (0);
+	}
+	else if (x == 3)
+	{
+		char	p[] = "Memory testing!\n";
+		void	*mem;
+		void	*memptr;
+
+		mem = &p;
+		memptr = (p +2);
+		//printf("Custom: %p\t%s\n", ft_memcpy(mem, memptr, ft_strlen(p)), p);
+		//printf("Original: %p\t%s\n", memcpy(mem, memptr, ft_strlen(p)), p);
+
+		if (ft_memcpy(memptr, mem, ft_strlen(p)) == memcpy(memptr, mem, ft_strlen(p)))
+		{
+			void	*dummy = NULL;
+			if (!ft_memcpy(mem, dummy, ft_strlen(p)))
+				return (1);
+			else if (ft_memcpy(dummy, dummy, ft_strlen(p)))
+				return (0);
+		}
+		else
+			return (0);
+	}
+	else if (x == 4)
+	{
+		char	tab[] = "1 4 6 9";
+		char	str[] = "mem is confusing";
+
+		// printf("Address:\n%p\tContent: %s\n", &tab, tab);
+		// printf("Address:\n%p\tContent: %s\n", &str, str);
+		if (memcmp(ft_memmove(str, tab, 7), str, ft_strlen(str))
+			&& !strcmp(ft_memmove(str, tab, 7), str)){
+			printf("Address:\n%p\tContent: %s\n", &tab, tab);
+			printf("Address:\n%p\tContent: %s\n", &str, str);
+			return (0);
+		}
+		else
+			return (1);
+	}
+	else
+	{
+		void	*ptr;
+		void	*ptr2;
+
+		ptr = malloc(10);
+		ptr2 = malloc(10);
+		if (!ptr || !ptr2)
+			return (-1);
+		ptr = memset(ptr, 65, 8);
+		ptr2 = ft_memset(ptr2, 65, 8);
+		// printf("%s|\n", (char *)ptr);
+		// printf("%s|\n", (char *)ptr2);
+		if (!strcmp(ptr, ptr2))
+			return (1);
+		else
+			return (0);
+		free(ptr);
+		free(ptr2);
+	}
+	return (-5);
+}
