@@ -65,6 +65,7 @@ char	**ft_split(char const *s, char c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		ft_atoi(const char *s);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+
 /*------------------------LINKED LISTS------------------------------*/
 t_list	*ft_lstnew(void *content);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
@@ -75,4 +76,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 int		ft_lstsize(t_list *lst);
+
+/*-----------------------TESTER---------------------------------------*/
+
+int		count_words(char const *str, char c);
+
 #endif
