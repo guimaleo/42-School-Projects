@@ -63,8 +63,8 @@ typedef struct s_complex
 
 /*---------------------------------------------------------------------------*/
 
-# define HEIGHT 400
-# define WIDTH 400
+# define HEIGHT 800
+# define WIDTH 800
 # define MAX_ITER 1 // ???
 # define KC 0.001
 # define SCALER 0.1

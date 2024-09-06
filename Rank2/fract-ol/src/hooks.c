@@ -14,7 +14,7 @@
 
 int	ft_zooming(int action, t_fractol *image, int x_0, int y_0)
 {
-	if (action == XK_equal || action == SCRU) 
+	if (action == XK_equal || action == SCRU)
 	{
 		image->zoom = image->zoom * 1.1;
 		image->x_coord = image->x_coord * 1.1 + x_0;
@@ -57,6 +57,38 @@ int	ft_key_pressed(int key, t_fractol *sign)
 		ft_zooming(key, sign, 0, 0);
 	else if (key == XK_i)
 		sign->iter += 1;
+	else if (key == XK_k)
+		sign->iter -= 1;
+	else if (key == XK_2)
+		sign->av2 += .001;
+	else if (key == XK_3)
+		sign->av3 += .001;
+	else if (key == XK_4)
+		sign->av2 -= .001;
+	else if (key == XK_5)
+		sign->av3 -= .001;
+	else if (key == XK_m)
+	{
+		sign->name = "Mandelbrot";
+		sign->iter = 20;
+		ft_render(sign, 0);
+	}
+	else if (key == XK_j)
+	{
+		sign->name = "Julia";
+		sign->av2 = .35;
+		sign->av3 = .35;
+		ft_render(sign, 0);
+	}
+	else if (key == XK_p)
+	{
+		sign->name = "Phoenix";
+		sign->av2 = .269;
+		sign->av3 = 0;
+		sign->av4 = -.01;
+		sign->iter = 20;
+		ft_render(sign, 0);
+	}
 	else if (key == XK_Up || key == XK_Down || key == XK_Left || key == XK_Right
 		|| key == XK_w || key == XK_s || key == XK_a || key == XK_d)
 		ft_moving(key, sign);
