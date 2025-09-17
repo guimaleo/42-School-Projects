@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lede-gui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lede-gui <lede-gui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 20:37:14 by lede-gui          #+#    #+#             */
-/*   Updated: 2024/05/02 11:46:30 by lede-gui         ###   ########.fr       */
+/*   Updated: 2025/09/17 11:40:16 by lede-gui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,5 +141,6 @@ void		ft_text_inst(t_fractol *txt);
 double		ft_scale(double to_scale, double new_min, \
 double new_max, double old_max);
 float		ft_atof(char *s);
+int	ft_power(int x, int y);
 
 #endif

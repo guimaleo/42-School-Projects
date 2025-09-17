@@ -12,7 +12,7 @@ SRC_FILES = window.c hooks.c image.c error.c fractals.c \
 	    string_utils.c math_utils.c inst.c
 
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -Ofast
+CFLAGS = -Wall -Werror -Wextra -Ofast -g
 
 SRC = $(addprefix $(SRC_DIR)/, $(SRC_FILES))
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRC:.c=.o)))

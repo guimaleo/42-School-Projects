@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   math_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lede-gui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lede-gui <lede-gui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:41:56 by lede-gui          #+#    #+#             */
-/*   Updated: 2024/04/30 19:42:26 by lede-gui         ###   ########.fr       */
+/*   Updated: 2025/09/16 17:11:51 by lede-gui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,17 @@ float	ft_atof(char *s)
 		}
 	}
 	return (res * sign);
+}
+
+int	ft_power(int x, int y){
+	int res = 0;
+
+	if (y == 0)
+		return 1;
+	res = x;
+	while (y > 1){
+		res *= x;
+		y--;
+	}
+	return res;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractals.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lede-gui <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lede-gui <lede-gui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 19:41:04 by lede-gui          #+#    #+#             */
-/*   Updated: 2024/04/30 20:04:55 by lede-gui         ###   ########.fr       */
+/*   Updated: 2025/09/17 11:41:02 by lede-gui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	ft_render(t_fractol *canvas, int color)
 	t_complex	c;
 
 	c = ft_init_complex(canvas);
+
+	// printf("%f | %f\n", c.real, c.imag);
 	y = 0;
 	while (y++ < HEIGHT)
 	{

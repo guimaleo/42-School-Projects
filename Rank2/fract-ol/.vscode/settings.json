@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "mlx.h": "c",
+        "xshm.h": "c",
+        "shm.h": "c",
+        "xkblib.h": "c",
+        "typeinfo": "c"
+    }
+}
